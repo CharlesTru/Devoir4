@@ -10,7 +10,6 @@ def problimite(h, P, Q, R, a, b, alpha, beta):
     S = np.zeros(N - 1)
     b_vec = np.zeros(N)
 
-    # Remplissage des diagonales et du second membre
     for i in range(N):
         D[i] = 2 + Q[i] * h**2
         if i > 0:
