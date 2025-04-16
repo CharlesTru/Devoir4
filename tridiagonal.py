@@ -33,5 +33,3 @@ start_time = time.time()
 x_dense = np.linalg.solve(A_dense, b)
 dense_time = time.time() - start_time
 print(f"Temps avec la matrice dense : {dense_time:.4f} secondes")
-
-print(f"Différence maximum entre les solutions : {np.max(np.abs(x_sparse - x_dense)):.2e}")
