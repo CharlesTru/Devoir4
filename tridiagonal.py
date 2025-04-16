@@ -22,10 +22,10 @@ b = np.ones(n)
 temps_deb_sparse = time.time()
 x_sparse = tridiagonal(D, I, S, b)
 temps_sparse = time.time() - temps_deb_sparse
-print(f"Temps sparse:{temps_sparse}")
+print(f"Temps sparse:{temps_sparse} s")
 
 A_complet = np.diag(D) + np.diag(I, -1) + np.diag(S, 1)
 temps_deb_complet = time.time()
 x_dense = np.linalg.solve(A_complet, b)
 temps_complet = time.time() - temps_deb_complet
-print(f"Temps complet:{temps_complet}")
+print(f"Temps complet:{temps_complet} s")
