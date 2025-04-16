@@ -6,30 +6,26 @@ import time
 def tridiagonal(D, I, S, b):
 
     N = len(D)
-
-    diagonal = [I, D, S]
-    offsets = [-1, 0, 1]
-    A = diags(diagonal, offsets=offsets, shape=(N, N)).tocsr()
+    diago = [I, D, S]
+    decalage = [-1, 0, 1]
+    A = diags(diago, offsets=decalage, shape=(N, N)).tocsr()
     x = spsolve(A, b)
 
     return x
 
 n = 15000
-# Définition des diagonales
-D = 4 * np.ones(n)          # Diagonale principale
-I = 1 * np.ones(n - 1)      # Diagonale inférieure
-S = 1 * np.ones(n - 1)      # Diagonale supérieure
+D = 4 * np.ones(n)
+I = 1 * np.ones(n - 1)
+S = 1 * np.ones(n - 1)
 b = np.ones(n)
-    
-# Mesure du temps avec matrice sparse
-start_time = time.time()
+
+temps_deb_sparse = time.time()
 x_sparse = tridiagonal(D, I, S, b)
-sparse_time = time.time() - start_time
-print(f"Temps avec la matrice sparse : {sparse_time:.4f} secondes")
-    
-# Comparaison avec une matrice dense
-A_dense = np.diag(D) + np.diag(I, -1) + np.diag(S, 1)
-start_time = time.time()
-x_dense = np.linalg.solve(A_dense, b)
-dense_time = time.time() - start_time
-print(f"Temps avec la matrice dense : {dense_time:.4f} secondes")
+temps_sparse = time.time() - temps_deb_sparse
+print(f"Temps sparse:{temps_sparse}")
+
+A_complet = np.diag(D) + np.diag(I, -1) + np.diag(S, 1)
+temps_deb_complet = time.time()
+x_dense = np.linalg.solve(A_complet, b)
+temps_complet = time.time() - temps_deb_complet
+print(f"Temps complet:{temps_complet}")
