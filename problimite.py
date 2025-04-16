@@ -2,9 +2,8 @@ import numpy as np
 from tridiagonal import tridiagonal
 
 def problimite(h, P, Q, R, a, b, alpha, beta):
-    N = len(P)
+    N = int(((b - a)/h) - 1)
 
-    # Construction des trois diagonales
     I = np.zeros(N - 1)
     D = np.zeros(N)
     S = np.zeros(N - 1)
@@ -17,33 +16,30 @@ def problimite(h, P, Q, R, a, b, alpha, beta):
         if i < N - 1:
             S[i] = -1 + P[i] * h / 2
         
-        # Second membre
         b_vec[i] = -R[i] * h**2
         if i == 0:
             b_vec[i] += (1 + P[0] * h / 2) * alpha
         if i == N - 1:
             b_vec[i] += (1 - P[N - 1] * h / 2) * beta
     
-    # Résolution du système
-    y_interior = tridiagonal(D, I, S, b_vec)
+    y_interieur = tridiagonal(D, I, S, b_vec)
     
-    # Construction du vecteur
     y = np.zeros(N + 2)
     y[0] = alpha
-    y[1:N + 1] = y_interior
+    y[1:N + 1] = y_interieur
     y[N + 1] = beta
     
     return y
 
-#test
 h = 0.1
 a = 0
 b = 1
-alpha, beta = 3, 4
-N = int((b - a) / h) - 1  # Nombre de noeuds intérieurs
-x = np.linspace(a + h, b - h, N)  # Noeuds intérieurs x_1 à x_N
-P = np.ones(N)  # Exemple : p(x) = 1
-Q = np.zeros(N)  # Exemple : q(x) = 0
-R = np.ones(N)   # Exemple : r(x) = 1
+alpha = 3
+beta = 4
+N = int((b - a) / h) - 1
+x = np.linspace(a + h, b - h, N)
+P = np.ones(N)
+Q = np.zeros(N)
+R = np.ones(N)
 y = problimite(h, P, Q, R, a, b, alpha, beta)
-print(f"Solution y : {y}")
+print(f"Solution y:{y}")
