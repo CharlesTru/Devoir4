@@ -46,7 +46,6 @@ for h in h_err:
 
 plt.figure(figsize=(8, 6))
 plt.loglog(h_err, erreurs, 'o-', label="Erreur E(h)")
-plt.loglog(h_err, [h**2 for h in h_err], 'r-', label="h^2")
 plt.xlabel("h")
 plt.ylabel("Erreur E(h)")
 plt.title("Analyse de l’erreur")
