@@ -2,7 +2,7 @@ import numpy as np
 from tridiagonal import tridiagonal
 
 def problimite(h, P, Q, R, a, b, alpha, beta):
-    N = int(((b - a)/h) - 1)
+    N = int((b - a)/h) - 1
 
     I = np.zeros(N - 1)
     D = np.zeros(N)
@@ -31,15 +31,3 @@ def problimite(h, P, Q, R, a, b, alpha, beta):
     
     return y
 
-h = 0.1
-a = 0
-b = 1
-alpha = 3
-beta = 4
-N = int((b - a) / h) - 1
-x = np.linspace(a + h, b - h, N)
-P = np.ones(N)
-Q = np.zeros(N)
-R = np.ones(N)
-y = problimite(h, P, Q, R, a, b, alpha, beta)
-print(f"Solution y:{y}")
