@@ -14,7 +14,7 @@ plt.figure(figsize=(10, 6))
 for h in val_h:
     N = int((b - a)/h) - 1
     x_interieur = np.linspace(a + h, b - h, N)
-    P = 1 / x_interieur
+    P = -1 / x_interieur
     Q = np.zeros(N)
     R = -1.6 / x_interieur**4
     y_num = problimite(h, P, Q, R, a, b, alpha, beta)
@@ -35,7 +35,7 @@ erreurs = []
 for h in h_err:
     N = int((b - a)/h) - 1
     x_interieur = np.linspace(a + h, b - h, N)
-    P = 1 / x_interieur
+    P = -1 / x_interieur
     Q = np.zeros(N)
     R = -1.6 / x_interieur**4
     y_num = problimite(h, P, Q, R, a, b, alpha, beta)
