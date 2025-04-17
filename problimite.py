@@ -2,7 +2,7 @@ import numpy as np
 from tridiagonal import tridiagonal
 
 def problimite(h, P, Q, R, a, b, alpha, beta):
-    N = int((b - a)/h) - 1
+    N = int((b - a)/h)
 
     I = np.zeros(N - 1)
     D = np.zeros(N)

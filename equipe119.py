@@ -12,7 +12,7 @@ val_h = [1/30, 1/100]
 
 plt.figure(figsize=(10, 6))
 for h in val_h:
-    N = int((b - a)/h) - 1
+    N = int((b - a)/h)
     x_interieur = np.linspace(a + h, b - h, N)
     P = -1 / x_interieur
     Q = np.zeros(N)
@@ -33,7 +33,7 @@ h_err = [10**-2, 10**-3, 10**-4, 10**-5]
 erreurs = []
 
 for h in h_err:
-    N = int((b - a)/h) - 1
+    N = int((b - a)/h)
     x_interieur = np.linspace(a + h, b - h, N)
     P = -1 / x_interieur
     Q = np.zeros(N)
