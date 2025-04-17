@@ -19,10 +19,10 @@ for h in val_h:
     R = -1.6 / x_interieur**4
     y_num = problimite(h, P, Q, R, a, b, alpha, beta)
     x_complet = np.linspace(a, b, N + 2)
-    plt.plot(x_complet, y_num, label=f"Solution numérique (h={h:.3f})")
+    plt.plot(x_complet, y_num, 'o-', label=f"Solution numérique (h={h:.3f})")
 
 x_exacte = np.linspace(a, b, 100)
-plt.plot(x_exacte, y(x_exacte), 'k-', label="Solution exacte")
+plt.plot(x_exacte, y(x_exacte), 'b-', label="Solution exacte")
 plt.xlabel("x")
 plt.ylabel("y(x)")
 plt.title("Comparaison des solutions")
